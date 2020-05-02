@@ -62,14 +62,14 @@ public class ChatServer {
                             System.out.println(_channel.getRemoteAddress() + "上线");
                         }
                         if (key.isReadable()){
-
+                            readData(key);
                         }
 
                         // 当前的key删除，防止重复处理
                         iterator.remove();
                     }
                 }else {
-                    System.out.println("等待中");
+                    ///System.out.println("等待中");
                 }
             }
         } catch (IOException e) {
@@ -124,6 +124,11 @@ public class ChatServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        ChatServer chatServer = new ChatServer();
+        chatServer.listen();
     }
 
 
