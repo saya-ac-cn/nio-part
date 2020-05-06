@@ -53,8 +53,12 @@ public class RPCClientHandler extends ChannelInboundHandlerAdapter implements Ca
      */
     @Override
     public synchronized Object call() throws Exception {
-        context.writeAndFlush(param);
-        wait();
+        try {
+            context.writeAndFlush(param);
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return result;
     }
 

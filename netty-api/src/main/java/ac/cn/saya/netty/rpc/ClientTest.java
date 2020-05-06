@@ -13,9 +13,13 @@ public class ClientTest {
 
     public static void main(String[] args) {
         RPCClient service = new RPCClient();
-        UserService bean = (UserService)service.getBean(UserService.class, "get");
-        String result = bean.get("saya");
-        System.out.println(result);
+        try {
+            UserService bean = (UserService)service.getBean(UserService.class, "get");
+            String result = bean.get("saya");
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

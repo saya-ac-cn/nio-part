@@ -35,7 +35,6 @@ public class RPCServer {
             // 使用链式的方式进行配置
             bootstrap.group(boosGroup, workGroup)// 设置两个线程组
                     .channel(NioServerSocketChannel.class)// 使用NioServerSocketChannel作为服务器通道的实现
-                    .handler(new LoggingHandler(LogLevel.INFO))// 设置bossGroup的日志级别
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel _channel) throws Exception {

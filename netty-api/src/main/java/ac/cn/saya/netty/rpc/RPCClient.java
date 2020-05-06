@@ -63,14 +63,12 @@ public class RPCClient {
                         }
                     });// 设置绑定处理器
 
-            ChannelFuture future = bootstrap.connect("127.0.0.1",9000).sync();
+            bootstrap.connect("127.0.0.1",9000).sync();
 
-            future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally {
-            group.shutdownGracefully();
         }
+        // 不要加group.shutdownGracefully(); 否则提供者收不到消息，服务异常
 
     }
 }
